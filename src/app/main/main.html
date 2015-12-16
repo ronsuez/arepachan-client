@@ -1,0 +1,40 @@
+<arepachan-navbar ></arepachan-navbar>
+<div layout ="row" layout-align="center center">
+  <div id="feed" layout="column"  layout-fill layout-align="center center">
+
+    <md-card ng-repeat="post in main.posts" class="card">
+      <md-toolbar >
+        <div  class="md-toolbar-tools" layout="row" layout-align="space-between center">
+          <h2>Post from {{post.origin}}</h2>
+          <span am-time-ago="post.age"></span>
+        </div>
+      </md-toolbar>
+      <img ng-src="{{post.image_url}}" class="md-card-image" alt="Washed Out">
+      <md-card-content>
+        <span>{{post.like - post.unlike}} votes</span>
+        <p>
+          {{post.body}}
+        </p>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="space-between center">
+        <div class="row">
+        <md-button class="md-icon-button"  aria-label="Like" ng-click="main.likePost($index, post.id)" >
+          <ng-md-icon icon="thumb_up" ></ng-md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Unlike" ng-click="main.unlikePost($index,post.id)">
+          <ng-md-icon icon="thumb_down" ></ng-md-icon>
+        </md-button>
+        </div>
+
+        <div class="row">
+        <md-button ><ng-md-icon icon="facebook"></ng-md-icon> Share</md-button>
+        <md-button><ng-md-icon icon="twitter"></ng-md-icon> Share</md-button>
+        </div>
+      </div>
+    </md-card>
+
+    <md-button class="md-fab" aria-label="Eat more Cookies" ng-click="main.loadMore()">
+            <ng-md-icon icon="cake"></ng-md-icon>
+    </md-button>
+  </div>
+</div>
